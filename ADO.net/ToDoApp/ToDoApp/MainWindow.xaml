@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:ToDoApp"
         mc:Ignorable="d"
         Title="ToDoList" Height="600" Width="400" ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="STYLES/styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Assets/background.png" Stretch="UniformToFill"/>
@@ -36,13 +46,13 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <CheckBox Grid.Row="0" Content="Important"/>
-                    <CheckBox Grid.Row="1" Content="May be later"/>
-                    <CheckBox Grid.Row="2" Content="Not important"/>
+                    <CheckBox x:Name="ImportantCheckBox" Grid.Row="0" Content="Important"/>
+                    <CheckBox x:Name="MiddleCheckBox" Grid.Row="1" Content="May be later"/>
+                    <CheckBox x:Name="NotImportantCheckBox" Grid.Row="2" Content="Not important"/>
                 </Grid>
 
                 <Label Content="PRIORITY"/>
-                
+
             </Grid>
 
         </Grid>
@@ -57,15 +67,31 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="30"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="19*"/>
                 </Grid.RowDefinitions>
 
-                <TextBox/>
+                
 
-                <ListView Grid.Row="2"></ListView>
+                <TextBox Name="NoteTextBox"
+                         />
 
-                <Button Grid.Row="1" Content="ADD"/>
+                <ListView Grid.Row="2"
+                          x:Name="NotesListView" Grid.RowSpan="2"/>
+
+                <Button Grid.Row="1" Click="CreateUserButton_Click"
+                        Content="ADD"
+                        HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <Button Grid.Row="1" Content="DELETE" HorizontalAlignment="Left" Margin="111,0,0,0"/>
             </Grid>
+
+
+            <StackPanel Grid.Column="0">
+                <CheckBox x:Name="DoneCHeckBox" Grid.Row="0" Grid.Column="0" Content="Done"/>
+                <CheckBox x:Name="DoingCheckBox" Grid.Row="1" Content="Doing"/>
+                <CheckBox x:Name="WillDOCheckBox" Grid.Row="2" Content="Will Do"/>
+
+            </StackPanel>
         </Grid>
 
     </Grid>
