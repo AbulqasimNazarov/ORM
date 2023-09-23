@@ -18,7 +18,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Assets/background.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="Assets/MainFonMebel.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="220"/>
@@ -28,8 +28,8 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="95"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -46,12 +46,10 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <CheckBox x:Name="ImportantCheckBox" Grid.Row="0" Content="Important"/>
-                    <CheckBox x:Name="MiddleCheckBox" Grid.Row="1" Content="May be later"/>
-                    <CheckBox x:Name="NotImportantCheckBox" Grid.Row="2" Content="Not important"/>
+
                 </Grid>
 
-                <Label Content="PRIORITY"/>
+
 
             </Grid>
 
@@ -59,39 +57,57 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="196"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="19*"/>
                 </Grid.RowDefinitions>
 
-                
 
-                <TextBox Name="NoteTextBox"
-                         />
 
-                <ListView Grid.Row="2"
-                          x:Name="NotesListView" Grid.RowSpan="2"/>
+                <TextBox Name="NoteTextBox"/>
+
+                <ListView Grid.Row="2" 
+                          x:Name="NotesListView" Grid.RowSpan="2">
+
+                </ListView>
 
                 <Button Grid.Row="1" Click="CreateUserButton_Click"
                         Content="ADD"
                         HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                <Button Grid.Row="1" Content="DELETE" HorizontalAlignment="Left" Margin="111,0,0,0"/>
+                <Button Grid.Row="1" Click="DeleteButton_Click" Content="DELETE" HorizontalAlignment="Left" Margin="111,0,0,0"/>
             </Grid>
 
 
             <StackPanel Grid.Column="0">
-                <CheckBox x:Name="DoneCHeckBox" Grid.Row="0" Grid.Column="0" Content="Done"/>
-                <CheckBox x:Name="DoingCheckBox" Grid.Row="1" Content="Doing"/>
-                <CheckBox x:Name="WillDOCheckBox" Grid.Row="2" Content="Will Do"/>
+
+                <Label Content="Status:"/>
+                <CheckBox x:Name="DoneCHeckBox" Grid.Row="0"
+                          Content="Done" Checked="DoneCheckBox_Checked"/>
+                <CheckBox x:Name="DoingCheckBox" Grid.Row="1"
+                          Content="Doing" Checked="DoingCheckBox_Checked"/>
+                <CheckBox x:Name="WillDOCheckBox" Grid.Row="2" 
+                          Content="Will Do" Checked="WillDoCheckBox_Checked"/>
+
+                <Label Content="PRIORITY:"/>
+
+                <CheckBox x:Name="ImportantCheckBox" Grid.Row="0" 
+                          Content="Important" Checked="ImportantCheckBox_Checked"/>
+                <CheckBox x:Name="MiddleCheckBox" Grid.Row="1"
+                          Content="May be later" Checked="MiddleCheckBox_Checked"/>
+                <CheckBox x:Name="NotImportantCheckBox" Grid.Row="2"
+                          Content="Not important" Checked="NotImportantCheckBox_Checked"/>
+               
 
             </StackPanel>
+
+
         </Grid>
 
     </Grid>

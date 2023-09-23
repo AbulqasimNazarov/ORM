@@ -1,4 +1,5 @@
 create database ToDoListDB
+use ToDoListDB;
 
 
 create table [Status](
@@ -23,11 +24,10 @@ insert into [Status]([StatusName])
 values('Done'),('Doing'),('Will do')
 
 insert into [Priority]([PriorityName])
-values('Import'),('May be later'),('Not important')
+values('Important'),('May be later'),('Not important')
 
 
-drop database ToDoListDB
 
-select * from [Notifications] n
-join Status st on n.Id = st.[StatusId]
-join Priority pr on n.Id = pr.[PriorityId]
+
+
+
