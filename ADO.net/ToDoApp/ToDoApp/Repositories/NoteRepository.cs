@@ -122,7 +122,7 @@ public class NoteRepository
         }
         catch (Exception ex)
         {
-            // Обработка ошибок, если что-то пошло не так
+            
             Console.WriteLine(ex.Message);
             return false;
         }
