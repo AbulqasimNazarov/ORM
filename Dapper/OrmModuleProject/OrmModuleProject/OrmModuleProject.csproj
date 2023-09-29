@@ -8,12 +8,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <None Remove="Assets\CellSignalFull.png" />
+    <None Remove="Assets\StartPicture.png" />
+    <None Remove="Assets\wifi.png" />
+    <None Remove="Assets\WifiIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\CellSignalFull.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\StartPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="SQL\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\WifiIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
  
