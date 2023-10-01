@@ -5,8 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Academy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="400">
-    <Grid>
+        Title="Academy" Height="550" Width="400" Background="BlanchedAlmond">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
+    </Window.Resources>
+
+
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="47*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Margin="10,10,10,10" Content="Info" Grid.Row="0"
+                    Click="ButtonInfo_OnClick" Grid.ColumnSpan="2"/>
+            <Button Margin="10,10,10,10" Content="Groups" Grid.Row="1"
+                    Click="ButtonGroups_OnClick" Grid.ColumnSpan="2"/>
+            <Button Margin="10,10,10,10" Content="Students" Grid.Row="2"
+                    Click="ButtonStudents_OnClick" Grid.ColumnSpan="2"/>
+            <Button Margin="10,10,10,10" Content="Teachers" Grid.Row="3"
+                    Click="ButtonTeachers_OnClick" Grid.ColumnSpan="2"/>
+
+
+        </Grid>
+
+        <ContentControl Margin="10" Grid.Column="1" Content="{Binding ActiveViewModel}"/>
+
+        
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Academy.ViewModels;
 
 namespace Academy
 {
@@ -20,9 +21,35 @@ namespace Academy
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
+            this.viewModel = new MainWindowViewModel();
+
+            this.DataContext = this.viewModel;
         }
+
+        private void ButtonInfo_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.ActiveViewModel = new InfoViewModel();
+
+        }
+        
+        private void ButtonGroups_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.ActiveViewModel = new GroupsViewModel();
+
+        }
+
+        private void ButtonStudents_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.ActiveViewModel = new StudentsViewModel();
+
+        }
+
+        private void ButtonTeachers_OnClick(object sender, RoutedEventArgs e) => viewModel.ActiveViewModel = new TeachersViewModel();
+        
+
     }
 }

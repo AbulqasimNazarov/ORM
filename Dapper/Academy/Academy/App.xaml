@@ -2,8 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Academy"
+             xmlns:vm="clr-namespace:Academy.ViewModels"
+             xmlns:v="clr-namespace:Academy.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:InfoViewModel}">
+            <v:InfoView/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:GroupsViewModel}">
+            <v:GroupsView/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:StudentsViewModel}">
+            <v:StudentsView/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:TeachersViewModel}">
+            <v:TeachersView/>
+
+        </DataTemplate>
          
     </Application.Resources>
 </Application>
