@@ -1,4 +1,5 @@
-﻿using Academy.ViewModels.Base;
+﻿using Academy.Commands.Base;
+using Academy.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,14 @@ namespace Academy.ViewModels
             get => activeViewModel;
             set => base.PropertyChangeMethod(out activeViewModel, value);
         }
+
+        private CommandBase groupsCommand;
+        public CommandBase GroupsCommand => this.groupsCommand ??= new CommandBase(
+            execute: () => this.ActiveViewModel = App.Container.GetInstance<GroupsViewModel>(),
+            canExecute: () => true);
+
     }
+
+
+
 }

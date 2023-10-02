@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SimpleInjector;
 
 namespace Academy
 {
@@ -13,5 +14,6 @@ namespace Academy
     /// </summary>
     public partial class App : Application
     {
+        public static Container Container { get; set; } = new Container();
     }
 }

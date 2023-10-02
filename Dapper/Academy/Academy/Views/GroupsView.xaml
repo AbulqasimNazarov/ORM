@@ -23,7 +23,7 @@
         </Grid>
 
 
-        <ListView Background="BlanchedAlmond" Grid.Row="1" ItemsSource="{Binding Groups}">
+        <ListView Background="BlanchedAlmond" Grid.Row="1" ItemsSource="{Binding GroupsList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -31,6 +31,7 @@
                         <TextBlock Text="{Binding GroupName}"/>
                         <TextBlock Text="{Binding StudentsCount}"/>
                         <TextBlock Text="{Binding TeacherId}"/>
+                        <TextBlock Text="{Binding TeacherName}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

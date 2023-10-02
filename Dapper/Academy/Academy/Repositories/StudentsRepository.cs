@@ -1,33 +1,30 @@
-﻿using System;
+﻿using Academy.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Academy.Models;
 using Dapper;
 
 namespace Academy.Repositories
 {
-    public class GroupsRepository
+    public class StudentsRepository
     {
         private readonly SqlConnection sqlConnection;
         private const string connectionString = $"Server=localhost;Database=Academy;Trusted_Connection=True;";
 
 
-        public GroupsRepository()
+        public StudentsRepository()
         {
             this.sqlConnection = new SqlConnection(connectionString);
             this.sqlConnection.Open();
         }
-        public IEnumerable<Groups> GetAll()
+        public IEnumerable<Students> GetAll()
         {
-            return this.sqlConnection.Query<Groups>(sql: @$"SELECT g.Id, g.[GroupName], g.[StudentsCount], t.TeacherName
-                                                         FROM Groups g
-                                                         JOIN Teachers t ON g.TeacherId = t.TeacherId");
+            return this.sqlConnection.Query<Students>(sql: @$"SELECT s.[StudentId], s.[StudentName], t.[TeacherName] 
+                                                     FROM Students s
+                                                     JOIN Teachers t ON s.TeacherId = t.TeacherId");
         }
-
     }
-
-    
 }
