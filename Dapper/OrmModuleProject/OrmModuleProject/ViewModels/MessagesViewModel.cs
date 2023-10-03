@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrmModuleProject.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public class MessagesViewModel : ViewModelBase
     {
+
     }
 }

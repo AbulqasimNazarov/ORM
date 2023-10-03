@@ -34,16 +34,19 @@
                     <Image Source="Assets\CellSignalFull.png" Grid.Column="6"/>
                     <ProgressBar x:Name="ZaradkaBar" Height="15"
                                  Width="25" Maximum="100"
-                                 Grid.Column="8"/>
+                                 Grid.Column="8" Value="80"/>
                     <TextBlock Name="timeTextBlock"  Grid.Column="1" Foreground="Aqua"/>
 
                 </Grid>
+
+                <ContentControl Grid.Row="1" Content="{Binding ActiveViewModel}"/>
 
 
                 <Line Grid.Row="2" X1="0" Y1="0" X2="120" Y2="0" 
                       Stroke="Silver" StrokeThickness="4" 
                       HorizontalAlignment="Center"  VerticalAlignment="Center"
-                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                      MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
 
             </Grid>
         </Border>

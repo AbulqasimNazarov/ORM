@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using OrmModuleProject.ViewModels;
+using OrmModuleProject.Views;
 
 namespace OrmModuleProject
 {
@@ -22,27 +24,31 @@ namespace OrmModuleProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DispatcherTimer timer1;
-        private DispatcherTimer timer2;
+        public MainViewModel viewModel;
+        private DispatcherTimer timer;
         private double progressValue = 100;
         public MainWindow()
         {
             InitializeComponent();
-            timer1 = new DispatcherTimer();
-            timer1.Interval = TimeSpan.FromSeconds(5); 
-            timer1.Tick += Timer_Tick;
-            timer1.Start();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5); 
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            this.viewModel = new MainViewModel();
+            this.viewModel.ActiveViewModel = new StartAppViewModel();
+            this.DataContext = viewModel;
+            
 
 
-            timer2 = new DispatcherTimer();
-            timer2.Interval = TimeSpan.FromSeconds(1);
-            timer2.Tick += Timer_Tick;
-            timer2.Start();
             UpdateTime();
         }
 
+        private void Line_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
 
-        
+            this.viewModel.ActiveViewModel = new LogInViewModel();
+        }
+
 
         private void UpdateTime()
         {
@@ -63,7 +69,7 @@ namespace OrmModuleProject
 
             if (progressValue <= 0)
             {
-                timer1.Stop();
+                timer.Stop();
             }
         }
     }
