@@ -26,7 +26,7 @@ namespace OrmModuleProject
     {
         public MainViewModel viewModel;
         private DispatcherTimer timer;
-        private double progressValue = 100;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -62,15 +62,14 @@ namespace OrmModuleProject
         {
             UpdateTime();
 
-            progressValue -= 10;
-            this.ZaradkaBar.Value = progressValue;
-            
+        }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
 
-            if (progressValue <= 0)
-            {
-                timer.Stop();
-            }
+            // Останавливаем таймер при закрытии окна
+            timer.Stop();
         }
     }
 }

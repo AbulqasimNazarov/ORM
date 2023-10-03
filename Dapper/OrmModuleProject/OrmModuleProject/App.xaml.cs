@@ -37,7 +37,7 @@ namespace OrmModuleProject
 
             mainView.DataContext = mainViewModel;
 
-            mainView.ShowDialog();
+            //mainView.ShowDialog();
         }
 
         private void RegisterContainer()

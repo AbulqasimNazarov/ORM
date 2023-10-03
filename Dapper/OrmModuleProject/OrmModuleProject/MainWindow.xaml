@@ -42,10 +42,7 @@
                 <ContentControl Grid.Row="1" Content="{Binding ActiveViewModel}"/>
 
 
-                <Line Grid.Row="2" X1="0" Y1="0" X2="120" Y2="0" 
-                      Stroke="Silver" StrokeThickness="4" 
-                      HorizontalAlignment="Center"  VerticalAlignment="Center"
-                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                <Button Grid.Row="2" Height="20" Width="50"
                       MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
 
             </Grid>
