@@ -1,4 +1,4 @@
-﻿
+﻿using BlogApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +13,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
-using OrmModuleProject.ViewModels;
-using OrmModuleProject.Views;
 
-namespace OrmModuleProject
+namespace BlogApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        
+        public MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            
+            //this.viewModel = new MainViewModel();
+            ////this.viewModel.ActiveViewModel = new LogInViewModel();
+            //this.DataContext = viewModel;
         }
 
-        
+
+        private void ButtonChange(object sender, RoutedEventArgs e)
+        {
+
+            this.viewModel.ActiveViewModel = App.Container.GetInstance<RegistrationViewModel>();
+        }
 
 
-        
+
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,27 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
-using OrmModuleProject.ViewModels;
-using OrmModuleProject.Views;
+using BlogApplication.Repositories;
+using BlogApplication.ViewModels;
 
-namespace OrmModuleProject
+namespace BlogApplication
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        
+        public MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            
+            UserDapperRepository userRepository = new UserDapperRepository();
+            this.viewModel = new MainViewModel();
+            this.viewModel.ActiveViewModel = new LogInViewModel(userRepository);
+            this.DataContext = this.viewModel;
         }
-
-        
-
 
         
     }
