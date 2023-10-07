@@ -1,0 +1,20 @@
+﻿<Application x:Class="Blogram.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Blogram.ViewModels"
+             xmlns:v="clr-namespace:Blogram.Views"
+             xmlns:local="clr-namespace:Blogram"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <DataTemplate DataType="{x:Type vm:LogInViewModel}">
+            <v:LogInView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegistrationViewModel}">
+            <v:RegistrationView/>
+        </DataTemplate>
+
+       
+    </Application.Resources>
+</Application>
