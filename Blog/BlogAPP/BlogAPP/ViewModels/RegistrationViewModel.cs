@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using BlogAPP.Commands.Base;
 using BlogAPP.Models;
 using BlogAPP.Repositories;
@@ -50,6 +51,15 @@ namespace BlogAPP.ViewModels
             set => base.PropertyChangeMethod(out password, value);
         }
 
+
+        private string imagePath;
+
+        public string ImagePath
+        {
+            get => imagePath;
+            set => base.PropertyChangeMethod(out imagePath, value);
+        }
+
         private Gender selectedGender;
         public Gender SelectedGender
         {
@@ -61,31 +71,42 @@ namespace BlogAPP.ViewModels
         
         private CommandBase? userCreateCommand;
 
-        public CommandBase UserCreateCommand
-        {
-            get
+        public CommandBase UserCreateCommand => userCreateCommand ??= new CommandBase(
+            () => 
             {
-                if (userCreateCommand == null)
+                try
                 {
-                    userCreateCommand = new CommandBase(() =>
-                        {
-                            var uRep = new UserDapperRepository();
-                            uRep.CreateUser(new User()
-                            {
-                                Name = this.Name,
-                                Surname = this.Surname,
-                                Email = this.Email,
-                                Password = this.Password,
-                                Gender = this.selectedGender?.Id
-                            });
-                        }, 
-                        () => true);
-                }
-                return userCreateCommand;
-            }
-            
-        }
+                    var uRep = new UserDapperRepository();
+                    uRep.CreateUser(new User()
+                    {
+                        Name = this.Name,
+                        Surname = this.Surname,
+                        Email = this.Email,
+                        Password = this.Password,
+                        ImagePath = this.ImagePath,
+                        Gender = this.selectedGender?.Id
+                    });
 
+                    
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+
+                this.Name = string.Empty;
+                this.Surname = string.Empty;
+                this.Email = string.Empty;
+                this.Password = string.Empty;
+                this.ImagePath = string.Empty;
+
+
+                
+
+            }, 
+                        () => true);
+                
+        
 
 
         public ObservableCollection<Gender> Genders { get; set; } 

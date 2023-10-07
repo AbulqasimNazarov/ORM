@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\CatProfil.jpg" />
     <None Remove="Assets\CellSignalFull.png" />
+    <None Remove="Assets\defaultProfil.png" />
     <None Remove="Assets\MainImage.png" />
     <None Remove="Assets\WifiIcon.png" />
   </ItemGroup>
@@ -19,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\CatProfil.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\CellSignalFull.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\defaultProfil.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\MainImage.png">
