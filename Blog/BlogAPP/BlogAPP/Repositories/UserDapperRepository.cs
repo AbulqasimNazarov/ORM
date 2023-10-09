@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
+using BlogAPP.Repositories.Base;
 using Dapper;
 
 namespace BlogAPP.Repositories
 {
-    public class UserDapperRepository
+    public class UserDapperRepository :IUserRepository
     {
         private readonly SqlConnection sqlConnection;
         private const string connectionString = $"Server=localhost;Database=BlogApp;Trusted_Connection=True;";
@@ -36,8 +37,8 @@ namespace BlogAPP.Repositories
                     throw new Exception("Password must be at least 8 characters long and contain at least one letter and one digit.");
                 }
 
-                var query = $@"insert into Users([Name], [Surname], [Email], [Password], [Gender])
-                            values(@Name, @Surname, @Email, @Password, @Gender)";
+                var query = $@"insert into Users([Name], [Surname], [Email], [Password], [ImagePath], [Gender])
+                            values(@Name, @Surname, @Email, @Password, @ImagePath, @Gender)";
 
                 int AffectedRowsCount = this.sqlConnection.Execute(query, user);
 
@@ -46,9 +47,9 @@ namespace BlogAPP.Repositories
                     throw new Exception("Insert Error!");
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(ex.Message);
             }
             
         }

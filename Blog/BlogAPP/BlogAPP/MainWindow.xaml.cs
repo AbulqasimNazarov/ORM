@@ -23,26 +23,26 @@ namespace BlogAPP
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainViewModel viewModel;
-        private readonly DispatcherTimer timer;
+        //public MainViewModel viewModel;
+        //private readonly DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1.3);
-            timer.Tick += Timer_Tick;
-            this.viewModel = new ();
-            this.DataContext = viewModel;
-            timer.Start();
+            //timer = new DispatcherTimer();
+            //timer.Interval = TimeSpan.FromSeconds(1.3);
+            //timer.Tick += Timer_Tick;
+            //this.viewModel = new ();
+            //this.DataContext = viewModel;
+            //timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
+        //private void Timer_Tick(object sender, EventArgs e)
+        //{
            
-            timer.Stop();
+        //    timer.Stop();
 
            
-            this.viewModel.ActiveViewModel = new RegistrationViewModel();
-        }
+        //    this.viewModel.ActiveViewModel = new RegistrationViewModel();
+        //}
     }
 }

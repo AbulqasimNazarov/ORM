@@ -26,27 +26,28 @@ namespace BlogAPP.Views
         public RegistrationView()
         {
             InitializeComponent();
-            var bitmapImage = new BitmapImage();
-            this.ProfilImage.Source = bitmapImage.ChangePic("/Assets/defaultProfil.png");
+            
+            //var bitmapImage = new BitmapImage();
+            //this.ProfilImage.Source = bitmapImage.ChangePic("/Assets/defaultProfil.png");
         }
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName));
-                    ProfilImage.Source = image;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
+            //if (openFileDialog.ShowDialog() == true)
+            //{
+            //    try
+            //    {
+            //        BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName));
+            //        ProfilImage.Source = image;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show($"Error: {ex.Message}");
+            //    }
+            //}
         }
 
     }

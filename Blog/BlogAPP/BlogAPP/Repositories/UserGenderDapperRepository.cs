@@ -6,10 +6,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlogAPP.Repositories.Base;
 
 namespace BlogAPP.Repositories
 {
-    public class UserGenderDapperRepository
+    public class UserGenderDapperRepository : IGenderRepository
     {
         private readonly SqlConnection sqlConnection;
         private const string connectionString = $"Server=localhost;Database=BlogApp;Trusted_Connection=True;";

@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BlogAPP.Views" xmlns:viewmodels="clr-namespace:BlogAPP.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:RegistrationViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="585" d:DesignWidth="360" Background="DarkBlue" >
+             d:DesignHeight="585" d:DesignWidth="360" >
     <Grid>
-        <!--<Grid.Background>
+        <Grid.Background>
             <ImageBrush ImageSource="/Assets/MainImage.png"/>
-        </Grid.Background>-->
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="88"/>
@@ -18,8 +18,8 @@
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
+            <RowDefinition Height="38"/>
             <RowDefinition Height="28"/>
-            <RowDefinition Height="48"/>
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
             <RowDefinition Height="28"/>
@@ -50,8 +50,8 @@
             <Button Grid.Column="1" Height="25" Width="120"
                     HorizontalAlignment="Left" FontSize="10"
                     VerticalAlignment="Bottom"
-                    Click="UploadButton_Click" 
-                    Content="Donwload Photo"/>
+                    Command="{Binding PictureDownloadCommand}" 
+                    Content="Download Photo"/>
         </Grid>
 
         <Label Grid.Column="1" Grid.Row="0" Content="Registration" IsEnabled="False"
@@ -64,8 +64,8 @@
         <Label Grid.Column="1" Grid.Row="4" Content="Surname" FontSize="15" Foreground="Azure"/>
         <TextBox Grid.Column="1" Grid.Row="5" Width="180" Text="{Binding Surname}"
                  HorizontalAlignment="Left" FontSize="15"/>
-        <Label Grid.Column="1" Grid.Row="6" Content="Email" FontSize="15" Foreground="Azure"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Width="180" Text="{Binding Email}"
+        <Label Grid.Column="1" Grid.Row="7" Content="Email" FontSize="15" Foreground="Azure"/>
+        <TextBox Grid.Column="1" Grid.Row="8" Width="180" Text="{Binding Email}"
                  HorizontalAlignment="Left" FontSize="15"/>
         <Label Grid.Column="1" Grid.Row="9" Content="Password" FontSize="15" Foreground="Azure"/>
         <TextBox Grid.Column="1" Grid.Row="10" Width="180" Text="{Binding Password}"
@@ -91,7 +91,7 @@
                Content="Already have an account?"/>
 
         <Button Grid.Column="1" Grid.Row="16" Content="Log In" Width="100"
-              
+                Command="{Binding LoginCommand}"
                 HorizontalAlignment="Right"/>
 
     </Grid>
