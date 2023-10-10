@@ -15,7 +15,9 @@ using SimpleInjector;
 using System.Windows.Threading;
 
 using System.Windows.Media.Imaging;
+using BlogAPP.Models;
 using Microsoft.Practices.Unity;
+
 
 
 namespace BlogAPP
@@ -65,13 +67,18 @@ namespace BlogAPP
         private void RegisterContainer()
         {
             Container.RegisterSingleton<IUserRepository, UserDapperRepository>();
+            Container.Options.AllowOverridingRegistrations = true;
+            Container.Register<IUserRepository, UserEFRepository>();
+
             Container.RegisterSingleton<IGenderRepository, UserGenderDapperRepository>();
             Container.RegisterSingleton<IMessenger, Messenger>();
 
             Container.RegisterSingleton<RegistrationViewModel>();
+            Container.RegisterSingleton<FormViewModel>();
             Container.RegisterSingleton<AccaountViewModel>();
             Container.RegisterSingleton<LoginViewModel>();
             Container.RegisterSingleton<MainViewModel>();
+            Container.RegisterSingleton<User>();
             
 
             Container.Verify();

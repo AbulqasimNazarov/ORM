@@ -19,5 +19,10 @@
             <views:AccaountView/>
         </DataTemplate>
 
+
+        <DataTemplate DataType="{x:Type vm:FormViewModel}">
+            <views:FormView/>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>

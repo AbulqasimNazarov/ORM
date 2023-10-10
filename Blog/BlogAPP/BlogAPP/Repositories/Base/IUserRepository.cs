@@ -9,7 +9,10 @@ namespace BlogAPP.Repositories.Base
 {
     interface IUserRepository
     {
-        IEnumerable<User> GetUsers();
+        public IEnumerable<User> GetUsers();
         void CreateUser(User product);
+        public User GetUserById(int? id);
+        public void Update(int? id, User user);
+        public void Delete(int? id);
     }
 }

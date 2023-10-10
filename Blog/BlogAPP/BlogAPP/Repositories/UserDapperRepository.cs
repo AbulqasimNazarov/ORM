@@ -10,10 +10,11 @@ using System.Windows;
 using System.Windows.Automation;
 using BlogAPP.Repositories.Base;
 using Dapper;
+using System.Data;
 
 namespace BlogAPP.Repositories
 {
-    public class UserDapperRepository :IUserRepository
+    public class UserDapperRepository : IUserRepository
     {
         private readonly SqlConnection sqlConnection;
         private const string connectionString = $"Server=localhost;Database=BlogApp;Trusted_Connection=True;";
@@ -26,6 +27,21 @@ namespace BlogAPP.Repositories
         public IEnumerable<User> GetUsers()
         {
             return this.sqlConnection.Query<User>(@$"select * from Users");
+        }
+
+       
+
+
+        public User GetUserById(int? Id)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+             
+                string query = "SELECT * FROM Users WHERE Id = @Id";
+                User user = dbConnection.QueryFirstOrDefault<User>(query, new { Id = Id });
+
+                return user;
+            }
         }
 
         public void CreateUser(User user)
@@ -52,6 +68,18 @@ namespace BlogAPP.Repositories
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        
+
+        public void Update(int? id, User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int? id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

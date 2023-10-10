@@ -129,15 +129,18 @@ namespace BlogAPP.ViewModels
                     
                     
                     var uRep = new UserDapperRepository();
-                    uRep.CreateUser(new User()
-                    {
+                    var u = new User() {
                         Name = this.Name,
                         Surname = this.Surname,
                         Email = this.Email,
                         Password = this.Password,
                         ImagePath = this.ImagePath.ToString(),
                         Gender = this.selectedGender?.Id
-                    });
+                    };
+                    uRep.CreateUser(u);
+                    
+                    
+                    var accaountViewModel = new AccaountViewModel(u);
                     App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<AccaountViewModel>();
 
                 }
@@ -145,13 +148,12 @@ namespace BlogAPP.ViewModels
                 {
                     MessageBox.Show(e.Message);
                 }
-                //var bitmapImage = new BitmapImage();
+                
                 this.Name = string.Empty;
                 this.Surname = string.Empty;
                 this.Email = string.Empty;
                 this.Password = string.Empty;
-                //this.ImagePath.UriSource = new Uri("/Assets/defaultProfil.png", UriKind.RelativeOrAbsolute);
-
+                
 
 
 
@@ -166,7 +168,7 @@ namespace BlogAPP.ViewModels
 
         public RegistrationViewModel(IMessenger messenger)
         {
-            //this.ImagePath = new BitmapImage();
+          
             this.messenger = messenger;
             var usersGenderRepository = new UserGenderDapperRepository();
             var genders = usersGenderRepository.GetGenders();

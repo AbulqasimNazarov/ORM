@@ -48,13 +48,11 @@ namespace BlogAPP.ViewModels
                 {
                     if (this.LoginEmail == user.Email && this.loginPassword == user.Password)
                     {
-                        App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<AccaountViewModel>();
-                        //MessageBox.Show("Incorrect input!");
-                        //return;
+                        string userImagePath = user.ImagePath.ToString(); // Получаем путь к изображению пользователя
+                        App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(user);
                         cap = true;
-
                     }
-                    
+
                 }
 
                 if (cap == false)
@@ -71,7 +69,7 @@ namespace BlogAPP.ViewModels
             () => true);
 
 
-        //private CommandBase? userCreateCommand;
+        
 
         public LoginViewModel(IMessenger messenger)
         {

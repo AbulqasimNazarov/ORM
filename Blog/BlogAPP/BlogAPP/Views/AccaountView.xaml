@@ -7,6 +7,119 @@
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="360" Background="Beige">
     <Grid>
-        
+
+        <Grid Height="255" VerticalAlignment="Top" Background="#FF4A2EBE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="1" Background="#FF4A2EBE" CornerRadius="90">
+                <Image Source="{Binding ImagePathFromBase}">
+                    <Image.Clip>
+                        <EllipseGeometry Center="70,70" RadiusX="70" RadiusY="70" />
+                    </Image.Clip>
+                </Image>
+            </Border>
+
+            <Label Grid.Row="1" Grid.Column="1" Width="70" Foreground="Aqua"
+                   FontSize="25"
+                   HorizontalAlignment="Left" Content="{Binding ProfName}"/>
+
+
+
+            <Label Grid.Row="1" Grid.Column="1" Width="70" Foreground="Aqua"
+                   FontSize="25"
+                   HorizontalAlignment="Right" Content="{Binding ProfSurname}"/>
+
+
+           
+
+
+
+        </Grid>
+
+
+
+
+        <Grid Height="340" VerticalAlignment="Bottom" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="295"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Label Content="Friends"
+                   Grid.Column="1" Grid.Row="0"
+                   Foreground="AliceBlue"/>
+
+            <Image Grid.Column="1" Grid.Row="2" 
+                   Source="/Assets/Menu1.png"/>
+
+
+
+
+
+            <Image Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="Image_MouseLeftButtonDown"
+                   Source="/Assets/Menu2.png"/>
+
+            <Image Grid.Column="1" Grid.Row="5" 
+                   Source="/Assets/Menu3.png"/>
+
+            <Image Grid.Column="1" Grid.Row="6" 
+                   Source="/Assets/Meu6.png"/>
+
+
+            <Image Grid.Column="1" Grid.Row="7"
+                   Source="/Assets/Menu5.png"/>
+
+
+
+
+
+
+
+
+
+
+
+
+            <Grid Grid.Column="1" Grid.Row="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/Assets/House.png"/>
+                <Image Grid.Column="1" Source="/Assets/Vector.png"/>
+                <Image Grid.Column="2" Source="/Assets/PlusCircle.png"/>
+                <Image Grid.Column="3" Source="/Assets/User.png"/>
+                <Image Grid.Column="4" Source="/Assets/DotsThree.png"/>
+            </Grid>
+
+        </Grid>
     </Grid>
 </UserControl>
