@@ -18,32 +18,20 @@ namespace BlogAPP.ViewModels
     public class FormViewModel : ViewModelBase
     {
         public User User { get; set; }
+        public readonly MyDbContext dbContext;
 
-
-        private string? email;
-
-        public string Email
-        {
-            get => email;
-            set => base.PropertyChangeMethod(out email, value);
-        }
-
+        //public IUserRepository userRepository;
+        public IUserRepository userRepository;
         private CommandBase? deleteCommand;
 
         public CommandBase DeleteCommand => deleteCommand ??= new CommandBase(
             () =>
             {
-                var context = new MyDbContext();
+                
 
-                // Получить пользователя по его идентификатору
-                var userToDelete = context.Users.FirstOrDefault(u => u.Id == User.Id);
+                
+                userRepository.Delete(User.Id);
 
-                if (userToDelete != null)
-                {
-                    // Удалить пользователя
-                    context.Users.Remove(userToDelete);
-                    context.SaveChanges();
-                }
             },
             () => true);
 
@@ -52,11 +40,13 @@ namespace BlogAPP.ViewModels
 
         public FormViewModel(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
+            this.dbContext = new MyDbContext();
+            
             User = user;
+            userRepository = new UserEFRepository();
+
+
+
 
             LoadUserData();
         }
@@ -69,10 +59,10 @@ namespace BlogAPP.ViewModels
             
             
             
-            var allUsers = userEFRepo.GetUsers().ToList(); 
+            var allUsers = userEFRepo.GetUsers(); 
 
             
-            var user = allUsers.FirstOrDefault(u => u.Id == User.Id);
+            var user = allUsers?.FirstOrDefault(u => u.Id == User.Id);
 
             if (user != null)
             {

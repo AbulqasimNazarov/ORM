@@ -32,13 +32,13 @@ namespace BlogAPP.Repositories
        
 
 
-        public User GetUserById(int? Id)
+        public User GetUserById(int id)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
              
-                string query = "SELECT * FROM Users WHERE Id = @Id";
-                User user = dbConnection.QueryFirstOrDefault<User>(query, new { Id = Id });
+                string query = "SELECT * FROM Users WHERE id = @Id";
+                User user = dbConnection.QueryFirstOrDefault<User>(query, new { Id = id });
 
                 return user;
             }
@@ -72,12 +72,12 @@ namespace BlogAPP.Repositories
 
         
 
-        public void Update(int? id, User user)
+        public void Update(int id, User user)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int? id)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

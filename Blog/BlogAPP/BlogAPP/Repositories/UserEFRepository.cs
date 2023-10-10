@@ -24,7 +24,7 @@ namespace BlogAPP.Repositories
             
         }
 
-        public void Delete(int? id)
+        public void Delete(int id)
         {
             var userToDelete = this.dbContext.Users.FirstOrDefault(u => u.Id == id);
 
@@ -40,12 +40,12 @@ namespace BlogAPP.Repositories
             return this.dbContext.Users.ToList();
         }
 
-        public User GetUserById(int? Id)
+        public User GetUserById(int id)
         {
-            return this.dbContext.Users.FirstOrDefault(u => u.Id == Id, new User());
+            return this.dbContext.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public void Update(int? id, User user)
+        public void Update(int id, User user)
         {
             if (user.Id == default)
                 user.Id = id;

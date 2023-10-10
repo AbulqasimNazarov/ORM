@@ -140,7 +140,7 @@ namespace BlogAPP.ViewModels
                     uRep.CreateUser(u);
                     
                     
-                    var accaountViewModel = new AccaountViewModel(u);
+                    //var accaountViewModel = new AccaountViewModel(u);
                     App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<AccaountViewModel>();
 
                 }

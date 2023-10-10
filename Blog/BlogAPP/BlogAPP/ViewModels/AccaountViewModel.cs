@@ -11,12 +11,13 @@ using BlogAPP.Models;
 using BlogAPP.Repositories;
 using BlogAPP.ViewModels.Base;
 using Microsoft.Win32;
+using SimpleInjector;
 
 namespace BlogAPP.ViewModels
 {
     public class AccaountViewModel : ViewModelBase
     {
-        private readonly IMessenger messenger;
+        //private readonly IMessenger messenger;
 
         private BitmapImage? imagePathFromBase;
         public BitmapImage ImagePathFromBase
@@ -51,17 +52,18 @@ namespace BlogAPP.ViewModels
         public CommandBase ClickAccount => clickAccount ??= new CommandBase(
             () =>
             {
-                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new FormViewModel(currentUser);
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<FormViewModel>();
 
             },
             () => true);
 
 
 
-        private User? currentUser;
+        private User currentUser;
 
         public AccaountViewModel(User user)
         {
+            
             if (user == null)
             {
                 throw new ArgumentNullException(nameof(user));
@@ -76,13 +78,14 @@ namespace BlogAPP.ViewModels
            
             var userDapperRepo = new UserDapperRepository();
 
-            var user = userDapperRepo.GetUserById(currentUser?.Id);
+            var user = userDapperRepo.GetUserById(currentUser.Id);
 
            
             if (user != null)
             {
                 
                 this.ImagePathFromBase = new BitmapImage(new Uri(user.ImagePath, UriKind.RelativeOrAbsolute));
+
                 this.profName = user.Name;
                 this.profSurname = user.Surname;
                 
