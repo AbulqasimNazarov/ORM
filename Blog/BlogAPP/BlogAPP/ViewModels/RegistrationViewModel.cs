@@ -141,7 +141,7 @@ namespace BlogAPP.ViewModels
                     
                     
                     //var accaountViewModel = new AccaountViewModel(u);
-                    App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<AccaountViewModel>();
+                    App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(u);
 
                 }
                 catch (Exception e)

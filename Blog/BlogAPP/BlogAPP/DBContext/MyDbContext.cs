@@ -10,7 +10,7 @@ namespace BlogAPP.DBContext
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<User>? Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Gender> Genders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

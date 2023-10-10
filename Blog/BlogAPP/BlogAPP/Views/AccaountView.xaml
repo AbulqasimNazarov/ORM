@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:BlogAPP.Views"
              mc:Ignorable="d" 
              d:DesignHeight="585" d:DesignWidth="360" Background="Beige">
+
+
+
     <Grid>
 
         <Grid Height="255" VerticalAlignment="Top" Background="#FF4A2EBE">
@@ -29,14 +32,14 @@
                 </Image>
             </Border>
 
-            <Label Grid.Row="1" Grid.Column="1" Width="70" Foreground="Aqua"
-                   FontSize="25"
+            <Label Grid.Row="1" Grid.Column="1" Width="90" Foreground="Aqua"
+                   FontSize="20"
                    HorizontalAlignment="Left" Content="{Binding ProfName}"/>
 
 
 
-            <Label Grid.Row="1" Grid.Column="1" Width="70" Foreground="Aqua"
-                   FontSize="25"
+            <Label Grid.Row="1" Grid.Column="1" Width="90" Foreground="Aqua"
+                   FontSize="20"
                    HorizontalAlignment="Right" Content="{Binding ProfSurname}"/>
 
 
@@ -73,25 +76,19 @@
                    Grid.Column="1" Grid.Row="0"
                    Foreground="AliceBlue"/>
 
-            <Image Grid.Column="1" Grid.Row="2" 
-                   Source="/Assets/Menu1.png"/>
+            <Button Grid.Column="1" Grid.Row="2" Background="#FF2B2323" 
+                    Content="Search" Foreground="Aqua" FontSize="13"
+                    HorizontalContentAlignment="Left" 
+                    Command="{Binding SearchCommand}"/>
 
 
 
 
+            <Button Grid.Column="1" Grid.Row="3" Background="#FF2B2323" 
+                    Content="Account Settings" Foreground="Aqua" FontSize="13"
+                    HorizontalContentAlignment="Left"
 
-            <Image Grid.Column="1" Grid.Row="3" MouseLeftButtonDown="Image_MouseLeftButtonDown"
-                   Source="/Assets/Menu2.png"/>
-
-            <Image Grid.Column="1" Grid.Row="5" 
-                   Source="/Assets/Menu3.png"/>
-
-            <Image Grid.Column="1" Grid.Row="6" 
-                   Source="/Assets/Meu6.png"/>
-
-
-            <Image Grid.Column="1" Grid.Row="7"
-                   Source="/Assets/Menu5.png"/>
+                    Command="{Binding ClickAccount}"/>
 
 
 

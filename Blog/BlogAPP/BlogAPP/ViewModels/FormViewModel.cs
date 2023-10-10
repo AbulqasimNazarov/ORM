@@ -22,6 +22,8 @@ namespace BlogAPP.ViewModels
 
         //public IUserRepository userRepository;
         public IUserRepository userRepository;
+
+
         private CommandBase? deleteCommand;
 
         public CommandBase DeleteCommand => deleteCommand ??= new CommandBase(
@@ -31,6 +33,8 @@ namespace BlogAPP.ViewModels
 
                 
                 userRepository.Delete(User.Id);
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<RegistrationViewModel>();
+                MessageBox.Show("Your Account deleted");
 
             },
             () => true);
@@ -57,23 +61,24 @@ namespace BlogAPP.ViewModels
             var userEFRepo = new UserEFRepository();
 
             
-            
-            
-            var allUsers = userEFRepo.GetUsers(); 
+            var allUsers = userEFRepo.GetUsers()?.ToList();
 
-            
-            var user = allUsers?.FirstOrDefault(u => u.Id == User.Id);
-
-            if (user != null)
+            if (allUsers != null)
             {
+                var user = allUsers.FirstOrDefault(u => u.Id == User.Id);
+
+                if (user != null)
+                {
+                   
+                    User.Id = user.Id;
+                }
                 
-                this.User.Id = user.Id;
             }
             else
             {
-                
-                MessageBox.Show("User doesnt founded.");
+                MessageBox.Show("Error loading users.");
             }
         }
+
     }
 }

@@ -52,7 +52,21 @@ namespace BlogAPP.ViewModels
         public CommandBase ClickAccount => clickAccount ??= new CommandBase(
             () =>
             {
-                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<FormViewModel>();
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new FormViewModel(currentUser);
+
+            },
+            () => true);
+
+
+
+        private CommandBase? searchCommand;
+
+        public CommandBase SearchCommand => searchCommand ??= new CommandBase(
+            () =>
+            {
+
+
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<SearchViewModel>();
 
             },
             () => true);

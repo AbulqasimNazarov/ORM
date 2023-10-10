@@ -74,6 +74,7 @@ namespace BlogAPP
             Container.RegisterSingleton<IMessenger, Messenger>();
 
             Container.RegisterSingleton<RegistrationViewModel>();
+            Container.RegisterSingleton<SearchViewModel>();
             Container.RegisterSingleton<FormViewModel>();
             Container.RegisterSingleton<AccaountViewModel>();
             Container.RegisterSingleton<LoginViewModel>();
