@@ -15,5 +15,8 @@ namespace BlogAPP.Models
         public string? Password { get; set; }
         public string? ImagePath { get; set;}
         public int? Gender { get; set;}
+
+
+        public override string ToString() => $@"{Name} {Surname} {Email}";
     }
 }

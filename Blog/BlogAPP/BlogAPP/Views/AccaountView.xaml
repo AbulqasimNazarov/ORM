@@ -8,10 +8,51 @@
              d:DesignHeight="585" d:DesignWidth="360" Background="Beige">
 
 
+    <UserControl.Resources>
+        <Style x:Key="OvalTopButton" TargetType="Button">
+            <Setter Property="Background" Value="#0500FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Padding" Value="5,2"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20,20,0,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="TopStraightBottomOvalButton" TargetType="Button">
+            <Setter Property="Background" Value="#0500FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Padding" Value="5,2"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,0,20,20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
 
     <Grid>
 
-        <Grid Height="255" VerticalAlignment="Top" Background="#FF4A2EBE">
+        <Grid Height="280" VerticalAlignment="Top" Background="#0500FF">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="200"/>
@@ -24,7 +65,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" Grid.Column="1" Background="#FF4A2EBE" CornerRadius="90">
+            <Border Grid.Row="3" Grid.Column="2" CornerRadius="90" BorderBrush="Black"/>
+
+            <Border Grid.Row="0" Grid.Column="1" Background="#0500FF">
                 <Image Source="{Binding ImagePathFromBase}">
                     <Image.Clip>
                         <EllipseGeometry Center="70,70" RadiusX="70" RadiusY="70" />
@@ -36,30 +79,23 @@
                    FontSize="20"
                    HorizontalAlignment="Left" Content="{Binding ProfName}"/>
 
-
-
             <Label Grid.Row="1" Grid.Column="1" Width="90" Foreground="Aqua"
                    FontSize="20"
                    HorizontalAlignment="Right" Content="{Binding ProfSurname}"/>
 
+            <Image Grid.Row="3" Grid.Column="2"
+                   Source="/Assets/UQOLL1.png" Stretch="Fill"/>
 
-           
-
-
-
+            <Image Grid.Row="3" Grid.Column="0"
+                   Source="/Assets/UQOLL2.png" Stretch="Fill"/>
         </Grid>
 
-
-
-
-        <Grid Height="340" VerticalAlignment="Bottom" Background="Black">
+        <Grid Height="330" VerticalAlignment="Bottom" Background="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="295"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="50"/>
@@ -72,34 +108,20 @@
                 <RowDefinition Height="38"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+
             <Label Content="Friends"
                    Grid.Column="1" Grid.Row="0"
                    Foreground="AliceBlue"/>
 
             <Button Grid.Column="1" Grid.Row="2" Background="#FF2B2323" 
                     Content="Search" Foreground="Aqua" FontSize="13"
-                    HorizontalContentAlignment="Left" 
+                    Style="{StaticResource OvalTopButton}"
                     Command="{Binding SearchCommand}"/>
 
-
-
-
             <Button Grid.Column="1" Grid.Row="3" Background="#FF2B2323" 
-                    Content="Account Settings" Foreground="Aqua" FontSize="13"
-                    HorizontalContentAlignment="Left"
-
+                    Content="Account" Foreground="Aqua" FontSize="13"
+                    Style="{StaticResource TopStraightBottomOvalButton}"
                     Command="{Binding ClickAccount}"/>
-
-
-
-
-
-
-
-
-
-
-
 
             <Grid Grid.Column="1" Grid.Row="9">
                 <Grid.ColumnDefinitions>
@@ -109,14 +131,12 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
                 <Image Grid.Column="0" Source="/Assets/House.png"/>
                 <Image Grid.Column="1" Source="/Assets/Vector.png"/>
                 <Image Grid.Column="2" Source="/Assets/PlusCircle.png"/>
                 <Image Grid.Column="3" Source="/Assets/User.png"/>
                 <Image Grid.Column="4" Source="/Assets/DotsThree.png"/>
             </Grid>
-
         </Grid>
     </Grid>
 </UserControl>

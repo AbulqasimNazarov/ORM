@@ -19,10 +19,22 @@ using Microsoft.Win32;
 
 namespace BlogAPP.ViewModels
 {
+
+    public class UserRegistrationMessage
+    {
+        public User User { get; set; }
+
+        public UserRegistrationMessage(User user)
+        {
+            User = user;
+        }
+    }
+
     public class RegistrationViewModel : ViewModelBase
     {
 
-        private readonly IMessenger messenger;
+        private readonly IMessenger _messenger;
+
 
 
         private string? name;
@@ -42,7 +54,7 @@ namespace BlogAPP.ViewModels
         }
 
         
-        
+
 
 
         private string? email;
@@ -104,15 +116,16 @@ namespace BlogAPP.ViewModels
 
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    // Создайте новый BitmapImage и установите UriSource
+
                     this.ImagePath = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.RelativeOrAbsolute));
                 }
             },
             () => true);
 
 
-        private CommandBase? userCreateCommand;
+            //private User? registeredUser;
 
+        private CommandBase? userCreateCommand;
         public CommandBase UserCreateCommand => userCreateCommand ??= new CommandBase(
             () => 
             {
@@ -130,6 +143,7 @@ namespace BlogAPP.ViewModels
                     
                     var uRep = new UserDapperRepository();
                     var u = new User() {
+                        
                         Name = this.Name,
                         Surname = this.Surname,
                         Email = this.Email,
@@ -138,10 +152,15 @@ namespace BlogAPP.ViewModels
                         Gender = this.selectedGender?.Id
                     };
                     uRep.CreateUser(u);
-                    
-                    
-                    //var accaountViewModel = new AccaountViewModel(u);
-                    App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(u);
+                   // var userDapperRepo = new UserDapperRepository();
+
+                    var user = uRep.GetUserById(u.Email);
+                    var registeredUser = new UserRegistrationMessage(user);
+
+                    //this._messenger.Send(new Navigation(pp.Container.GetInstance<use>())));
+
+                    this._messenger.Send(new Navigation(App.Container.GetInstance<AccaountViewModel>()));
+                    //this._messenger.Send(new Navigation(App.Container.GetInstance<AccaountViewModel>()));
 
                 }
                 catch (Exception e)
@@ -169,7 +188,7 @@ namespace BlogAPP.ViewModels
         public RegistrationViewModel(IMessenger messenger)
         {
           
-            this.messenger = messenger;
+            this._messenger = messenger;
             var usersGenderRepository = new UserGenderDapperRepository();
             var genders = usersGenderRepository.GetGenders();
             this.Genders = new ObservableCollection<Gender>(genders);

@@ -48,7 +48,7 @@ namespace BlogAPP.ViewModels
                 {
                     if (this.LoginEmail == user.Email && this.loginPassword == user.Password)
                     {
-                        string userImagePath = user.ImagePath.ToString(); // Получаем путь к изображению пользователя
+                        string userImagePath = user.ImagePath.ToString(); 
                         App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(user);
                         cap = true;
                     }

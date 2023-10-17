@@ -23,6 +23,7 @@ namespace BlogAPP.Views
         public FormView()
         {
             InitializeComponent();
+            
         }
     }
 }

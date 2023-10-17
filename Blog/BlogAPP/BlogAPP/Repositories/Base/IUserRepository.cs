@@ -11,7 +11,7 @@ namespace BlogAPP.Repositories.Base
     {
         public IEnumerable<User> GetUsers();
         void CreateUser(User product);
-        public User GetUserById(int id);
+        public User GetUserById(string? email);
         public void Update(int id, User user);
         public void Delete(int id);
     }

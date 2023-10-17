@@ -27,6 +27,9 @@ namespace BlogAPP.ViewModels
         }
 
 
+
+
+
         private string? profName;
         public string ProfName
         {
@@ -52,7 +55,7 @@ namespace BlogAPP.ViewModels
         public CommandBase ClickAccount => clickAccount ??= new CommandBase(
             () =>
             {
-                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new FormViewModel(currentUser);
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new FormViewModel(_currentUser);
 
             },
             () => true);
@@ -73,18 +76,19 @@ namespace BlogAPP.ViewModels
 
 
 
-        private User currentUser;
+        private User? _currentUser;
 
+        
         public AccaountViewModel(User user)
         {
             
-            if (user == null)
+            if (user != null)
             {
-                throw new ArgumentNullException(nameof(user));
+                this._currentUser = user;
+
+                LoadUserData();
             }
-            this.currentUser = user;
-           
-            LoadUserData();
+            
         }
 
         private void LoadUserData()
@@ -92,7 +96,7 @@ namespace BlogAPP.ViewModels
            
             var userDapperRepo = new UserDapperRepository();
 
-            var user = userDapperRepo.GetUserById(currentUser.Id);
+            var user = userDapperRepo.GetUserById(_currentUser.Email);
 
            
             if (user != null)

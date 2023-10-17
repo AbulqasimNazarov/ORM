@@ -26,6 +26,10 @@
     <None Remove="Assets\Meu6.png" />
     <None Remove="Assets\PlusCircle.png" />
     <None Remove="Assets\Rectangle 5.png" />
+    <None Remove="Assets\Testing.png" />
+    <None Remove="Assets\Uqol1.png" />
+    <None Remove="Assets\UQOLL1.png" />
+    <None Remove="Assets\UQOLL2.png" />
     <None Remove="Assets\User.png" />
     <None Remove="Assets\Vector.png" />
     <None Remove="Assets\WifiIcon.png" />
@@ -79,6 +83,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Rectangle 5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\UQOLL1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\UQOLL2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\User.png">

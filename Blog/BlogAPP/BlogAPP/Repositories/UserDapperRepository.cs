@@ -32,13 +32,13 @@ namespace BlogAPP.Repositories
        
 
 
-        public User GetUserById(int id)
+        public User GetUserById(string? email)
         {
             using (IDbConnection dbConnection = new SqlConnection(connectionString))
             {
              
-                string query = "SELECT * FROM Users WHERE id = @Id";
-                User user = dbConnection.QueryFirstOrDefault<User>(query, new { Id = id });
+                string query = "SELECT * FROM Users WHERE email = @Email";
+                User user = dbConnection.QueryFirstOrDefault<User>(query, new { Email = email });
 
                 return user;
             }
