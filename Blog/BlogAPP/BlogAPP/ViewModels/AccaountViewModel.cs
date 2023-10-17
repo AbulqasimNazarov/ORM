@@ -69,7 +69,7 @@ namespace BlogAPP.ViewModels
             {
 
 
-                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<SearchViewModel>();
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new SearchViewModel(this._currentUser);
 
             },
             () => true);

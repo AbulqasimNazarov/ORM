@@ -131,16 +131,12 @@ namespace BlogAPP.ViewModels
             {
                 try
                 {
-
                     if (this.Name == null || this.Email == null || this.Password == null
                         || this.Name == string.Empty || this.Surname == string.Empty || this.Email == string.Empty
                         || this.Password == string.Empty)
                     {
                         throw new Exception("Empty boxes!");
                     }
-
-                    
-                    
                     var uRep = new UserDapperRepository();
                     var u = new User() {
                         
@@ -152,16 +148,9 @@ namespace BlogAPP.ViewModels
                         Gender = this.selectedGender?.Id
                     };
                     uRep.CreateUser(u);
-                   // var userDapperRepo = new UserDapperRepository();
-
                     var user = uRep.GetUserById(u.Email);
-                    var registeredUser = new UserRegistrationMessage(user);
-
-                    //this._messenger.Send(new Navigation(pp.Container.GetInstance<use>())));
-
-                    this._messenger.Send(new Navigation(App.Container.GetInstance<AccaountViewModel>()));
+                    App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(user);
                     //this._messenger.Send(new Navigation(App.Container.GetInstance<AccaountViewModel>()));
-
                 }
                 catch (Exception e)
                 {
@@ -172,11 +161,6 @@ namespace BlogAPP.ViewModels
                 this.Surname = string.Empty;
                 this.Email = string.Empty;
                 this.Password = string.Empty;
-                
-
-
-
-
             }, 
                         () => true);
                 

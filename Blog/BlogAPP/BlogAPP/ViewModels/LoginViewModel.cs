@@ -61,10 +61,6 @@ namespace BlogAPP.ViewModels
                     
                 }
 
-
-
-
-
             },
             () => true);
 

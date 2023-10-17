@@ -18,6 +18,9 @@ namespace BlogAPP.ViewModels
 {
     public class SearchViewModel : ViewModelBase
     {
+        private User _currentUser;
+
+
 
         private string? text;
         public string Text
@@ -61,13 +64,15 @@ namespace BlogAPP.ViewModels
             {
 
 
-                App.Container.GetInstance<MainViewModel>().ActiveViewModel = App.Container.GetInstance<AccaountViewModel>();
+                App.Container.GetInstance<MainViewModel>().ActiveViewModel = new AccaountViewModel(this._currentUser);
 
             },
             () => true);
 
-        public SearchViewModel()
+        public SearchViewModel(User user)
         {
+            this._currentUser = user;
+
             Users = new ObservableCollection<User>();
         }
     }

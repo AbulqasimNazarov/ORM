@@ -17,6 +17,8 @@ namespace BlogAPP.Models
         public int? Gender { get; set;}
 
 
-        public override string ToString() => $@"{Name} {Surname} {Email}";
+        public override string ToString() => $@"Name: {Name} 
+Surname: {Surname} 
+Email: {Email}";
     }
 }
