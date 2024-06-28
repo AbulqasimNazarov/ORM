@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Assets\0000.png" />
     <None Remove="Assets\best-discord-profile-pictures-7.png" />
+    <None Remove="Assets\Big Shoes Torso.png" />
     <None Remove="Assets\CatProfil.jpg" />
     <None Remove="Assets\CellSignalFull.png" />
     <None Remove="Assets\defaultProfil.png" />
@@ -41,6 +42,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\best-discord-profile-pictures-7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Big Shoes Torso.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\CatProfil.jpg">

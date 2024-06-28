@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BlogAPP.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="585" d:DesignWidth="360" Background="Beige">
+             d:DesignHeight="690" d:DesignWidth="970" Background="Beige">
 
 
     <UserControl.Resources>
@@ -123,20 +123,7 @@
                     Style="{StaticResource TopStraightBottomOvalButton}"
                     Command="{Binding ClickAccount}"/>
 
-            <Grid Grid.Column="1" Grid.Row="9">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="/Assets/House.png"/>
-                <Image Grid.Column="1" Source="/Assets/Vector.png"/>
-                <Image Grid.Column="2" Source="/Assets/PlusCircle.png"/>
-                <Image Grid.Column="3" Source="/Assets/User.png"/>
-                <Image Grid.Column="4" Source="/Assets/DotsThree.png"/>
-            </Grid>
+           
         </Grid>
     </Grid>
 </UserControl>

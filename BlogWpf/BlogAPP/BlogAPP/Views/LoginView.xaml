@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BlogAPP.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="585" d:DesignWidth="360" Background="DarkBlue" >
+             d:DesignHeight="690" d:DesignWidth="970" Background="DarkBlue" >
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/MainImage.png"/>
@@ -35,7 +35,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Grid.Column="1" Grid.Row="4" Content="Email" FontSize="15" Foreground="Azure"/>
+        <Label Grid.Column="1" Grid.Row="4" Content="Email" FontSize="15" Foreground="#9BD21C"/>
         <TextBox Grid.Column="1" Grid.Row="5" Width="200" Text="{Binding LoginEmail}"
                  HorizontalAlignment="Left" FontSize="15"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Password" FontSize="15" Foreground="Azure"/>
