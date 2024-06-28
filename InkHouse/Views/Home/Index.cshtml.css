@@ -1,0 +1,200 @@
+.first-block {
+    width: 1110px;
+    margin: 0 auto;
+    background-image: url(/Assets/IMG/Layer.png);
+    background-repeat: no-repeat;
+    background-position: left 0px top 0%;
+    padding-top: 145px;
+    padding-bottom: 144px;
+    
+    
+}
+
+.first-inner-block {
+    width: 540px;
+    margin-left: 570px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+
+.description-first-block {
+    padding-top: 20px;
+    font-size: 18px;
+    color: #86928B;
+}
+
+
+
+.head-first-block {
+    font-size: 60px;
+}
+
+button {
+    color: #598D66;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    
+}
+
+.first-block-button {
+    margin-top: 60px; 
+    width: 225px;
+    border: 2px solid #598D66;
+    padding: 20px 60px;
+}
+
+
+
+.head-first-block .highlight-text {
+    color: #598D66;
+}
+
+
+.second-block {
+    margin-top: 69px;
+}
+
+
+.second-block-inner {
+    width: 1110px;
+    margin: 0 auto;
+}
+
+.second-block-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.second-block-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.sc-button:last-child {
+    margin-right: 0px;
+}
+
+.second-block-head-descr {
+    font-size: 40px;
+    
+}
+
+.sc-button1 {
+    
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: #D4E8D9;
+    color: #2C2D35;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.sc-button {
+    
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: #376B44;
+    color: #F4F6F5;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
+.div-sc-button {
+    margin-right: 32px;
+}
+
+.div-sc-button:last-child {
+    margin-right: 0px;
+}
+
+
+
+
+.second-block-items {
+    
+    margin-right: 30px;
+}
+
+
+.second-block-items:last-child {
+    
+    margin-right: 0px;
+}
+
+.second-block-item {
+    /* margin-right: 30px; */
+    margin-left: 0px;
+    background-color: #E1EDE6;
+    width: 350px;
+    margin-top: 30px;
+    /* margin-bottom: 30px; */
+}
+
+
+.second-block-item:last-child {
+    margin-right: 0px;
+}
+
+.second-block-item-inner {
+    width: 310px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+
+.item-img {
+    margin-bottom: 20px;
+}
+
+.item-artist-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #86928B;
+    
+    
+}
+
+.item-art-name {
+    font-size: 30px;
+    margin-bottom: 8px;
+    
+    
+}
+
+.item-description {
+    margin-bottom: 30px;
+    font-size: 18px;
+    
+}
+
+.item-price {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #598D66;
+    
+   
+}
+
+.button-item {
+    
+    width: 310px;
+    border: 1px solid #598D66;
+    padding: 21px 107.5px;
+    margin-bottom: 30px;
+}

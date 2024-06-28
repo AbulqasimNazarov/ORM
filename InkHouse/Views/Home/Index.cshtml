@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Painting>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="first-block">
+    <div class="first-inner-block">
+        <div class="head-first-block">Реплики картин от <span class="highlight-text">Ink. House</span></div>
+        <div class="description-first-block">Высокое качество отрисовки на плотной бумаге или льняном холсте. Редкие
+            произведения, доступные цены.</div>
+        <div class="button-first-block"><button class="first-block-button">Продукция</button></div>
+
+    </div>
+
+
+</div>
+
+
+
+
+<div class="second-block">
+    <div class="second-block-inner">
+        <div class="second-block-head">
+            <div class="second-block-head-descr">Репродукции</div>
+
+            <div class="second-block-buttons">
+                <div class="div-sc-button"><button class="sc-button">Франция</button></div>
+                <div class="div-sc-button"><button class="sc-button1">Германия</button></div>
+                <div class="div-sc-button"><button class="sc-button1">Англия</button></div>
+            </div>
+        </div>
+        <div style="width: 1110px; margin: 0 auto; display: flex; flex-wrap: wrap;">
+            @foreach (var painting in base.Model){
+
+                <div class="second-block-items">
+
+                    <div class="second-block-item">
+                        <div class="second-block-item-inner">
+                            <div class="item-img"><img src="/Home/Image/@painting.PaintingId"></div>
+                            <div class="item-artist-name">
+                                <span>@painting.Painter.Name</span>
+                                <span>@painting.Painter.Surname</span>
+                            </div>
+                            <div class="item-art-name">@painting.Name</div>
+                            <div class="item-description">@painting.Title</div>
+                            <div class="item-price">@painting.Price руб</div>
+                            <div class="item-button"><button class="button-item">В корзину</button></div>
+
+                        </div>
+                    </div>
+                
+                </div>
+        }
+        </div>
+
+
+        
+    </div>
+</div>
