@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InkHouse.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,9 +73,9 @@ namespace InkHouse.Migrations
                 columns: new[] { "CountryId", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("16e52979-6a2c-4498-b60e-35a9d7c68a30"), "Германия" },
-                    { new Guid("28b6a49f-4cb9-41ae-a2be-7a54112a191a"), "Англия" },
-                    { new Guid("903fb3fc-90c8-4353-a731-6911170cb807"), "Франция" }
+                    { new Guid("36d13b72-f356-4d0a-8364-c6f55e78e538"), "Англия" },
+                    { new Guid("e8c499d3-a794-49a7-a65e-f0ec0bcace58"), "Германия" },
+                    { new Guid("ed1dc00c-8576-4e3b-8a99-6c85ad9336b3"), "Франция" }
                 });
 
             migrationBuilder.InsertData(
@@ -83,9 +83,9 @@ namespace InkHouse.Migrations
                 columns: new[] { "Id", "Birthdate", "CountryId", "Name", "Surname" },
                 values: new object[,]
                 {
-                    { new Guid("5676a486-0bf7-49a7-9be0-f9c482c2f591"), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("903fb3fc-90c8-4353-a731-6911170cb807"), "Марсель", "Руссо" },
-                    { new Guid("79c30055-dfcc-45f6-85a5-174cf2da2146"), new DateTime(1980, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("16e52979-6a2c-4498-b60e-35a9d7c68a30"), "Анри", "Селин" },
-                    { new Guid("bb57c88c-b1e3-43a4-825a-ac289e85cfb4"), new DateTime(1990, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("28b6a49f-4cb9-41ae-a2be-7a54112a191a"), "Франсуа", "Дюпон" }
+                    { new Guid("28ff85a5-63da-41c8-827b-2d69afc3b148"), new DateTime(1990, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("36d13b72-f356-4d0a-8364-c6f55e78e538"), "Франсуа", "Дюпон" },
+                    { new Guid("9791266f-620d-433f-aad4-1dede4052505"), new DateTime(1980, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("e8c499d3-a794-49a7-a65e-f0ec0bcace58"), "Анри", "Селин" },
+                    { new Guid("bb26a45a-120e-477f-9356-a3845f07af35"), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("ed1dc00c-8576-4e3b-8a99-6c85ad9336b3"), "Марсель", "Руссо" }
                 });
 
             migrationBuilder.InsertData(
@@ -93,9 +93,8 @@ namespace InkHouse.Migrations
                 columns: new[] { "PaintingId", "Image", "Name", "PainterId", "Price", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("27bad295-e53c-4060-8fb5-57681f1e4354"), "Assets/PaintingImg/27bad295-e53c-4060-8fb5-57681f1e4354.jpg", "Дама с собачкой", new Guid("79c30055-dfcc-45f6-85a5-174cf2da2146"), 16500.0, "Акрил, бумага (50х80)" },
-                    { new Guid("7cea2648-a8fc-4cca-9730-85bf83ac437c"), "Assets/PaintingImg/7cea2648-a8fc-4cca-9730-85bf83ac437c.jpg", "Процедура", new Guid("bb57c88c-b1e3-43a4-825a-ac289e85cfb4"), 20000.0, "Цветная литография (40х60)" },
-                    { new Guid("f8a8c851-2cbc-48c2-a439-bdc494d6329a"), "Assets/PaintingImg/f8a8c851-2cbc-48c2-a439-bdc494d6329a.jpg", "Охота Амура", new Guid("5676a486-0bf7-49a7-9be0-f9c482c2f591"), 14500.0, "Холст, масло (50х80)" }
+                    { new Guid("27bad295-e53c-4060-8fb5-57681f1e4354"), "Assets/PaintingImg/27bad295-e53c-4060-8fb5-57681f1e4354.jpg", "Дама с собачкой", new Guid("9791266f-620d-433f-aad4-1dede4052505"), 16500.0, "Акрил, бумага (50х80)" },
+                    { new Guid("7cea2648-a8fc-4cca-9730-85bf83ac437c"), "Assets/PaintingImg/7cea2648-a8fc-4cca-9730-85bf83ac437c.jpg", "Процедура", new Guid("28ff85a5-63da-41c8-827b-2d69afc3b148"), 20000.0, "Цветная литография (40х60)" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -13,6 +13,28 @@ public class PaintingService : IPaintingService
         this.paintingRepository = paintingRepository;
     }
 
+    public async Task CreateNewPaintingAsync(Painting newPainting, IFormFile image)
+    {
+        ArgumentNullException.ThrowIfNullOrEmpty(newPainting.Name);
+        await paintingRepository.CreateAsync(newPainting, image);
+    }
+
+
+    public async Task DeletePaintingById(Guid id)
+    {
+        await paintingRepository.DeleteByIdAsync(id);
+    }
+
+    public async Task<IEnumerable<Country>> GetAllCountriesAsync()
+    {
+        var countries = await paintingRepository.GetAllCountriesAsync();
+        return countries;
+    }
+
+    public async Task<IEnumerable<Painter>> GetAllPaintersAsync()
+    {
+        return await paintingRepository.GetAllPaintersAsync();
+    }
 
     public async Task<IEnumerable<Painting>> GetAllPaintingsAsync()
     {
@@ -26,4 +48,10 @@ public class PaintingService : IPaintingService
         var painting = await paintingRepository.GetByIdAsync(id);
         return painting;
     }
+
+    public async Task UpdatePaintingAsync(Painting painting)
+    {
+        await paintingRepository.UpdateAsync(painting);
+    }
+
 }

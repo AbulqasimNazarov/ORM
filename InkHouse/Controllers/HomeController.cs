@@ -3,24 +3,31 @@ using Microsoft.AspNetCore.Mvc;
 using InkHouse.Models;
 using InkHouse.Services.Base;
 
+
 namespace InkHouse.Controllers;
 
 public class HomeController : Controller
 {
     private readonly IPaintingService paintingService;
 
+
     public HomeController(IPaintingService paintingService)
     {
         this.paintingService = paintingService;
+
     }
 
 
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var paintings = await paintingService.GetAllPaintingsAsync();
-        return View(paintings);
+        ViewBag.Countries = await paintingService.GetAllCountriesAsync();
+        ViewBag.Paintings = await paintingService.GetAllPaintingsAsync();
+        ViewBag.Painters = await paintingService.GetAllPaintersAsync();
+        return View();
     }
+
+
 
     [HttpGet("[controller]/[action]/{id}")]
     public async Task<IActionResult> Image(Guid id)
@@ -34,9 +41,41 @@ public class HomeController : Controller
         return File(fileStream, "image/jpeg");
     }
 
-    public IActionResult Privacy()
+    [HttpPost]
+    [Route("[controller]/edit")]
+    public async Task<IActionResult> ChangePrice(Guid id, [FromForm] string newPrice)
     {
-        return View();
+        var painting = await paintingService.GetPaintingByIdAsync(id);
+        if (painting == null)
+        {
+            return NotFound();
+        }
+
+        var num = Convert.ToDouble(newPrice);
+
+        painting.Price = num;
+        await paintingService.UpdatePaintingAsync(painting);
+
+        return RedirectToAction("Index");
+    }
+
+
+    [HttpPost]
+    [Route("[controller]/remove", Name = "DeletePainting")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        await paintingService.DeletePaintingById(id);
+        return RedirectToAction(controllerName: "Home", actionName: "Index");
+    }
+
+
+    [HttpPost]
+    [Route("[controller]/add", Name = "AddPainting")]
+    public async Task<IActionResult> AddNewPainting([FromForm] Painting newPainting, IFormFile image)
+    {
+
+        await paintingService.CreateNewPaintingAsync(newPainting, image);
+        return RedirectToAction(controllerName: "Home", actionName: "Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

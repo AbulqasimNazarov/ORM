@@ -50,7 +50,7 @@ public class InkHouseDbContext : DbContext
 
         // Seed data for Painting
         modelBuilder.Entity<Painting>().HasData(
-            new Painting { PaintingId = new Guid("f8a8c851-2cbc-48c2-a439-bdc494d6329a"), Name = "Охота Амура", Image = "Assets/PaintingImg/f8a8c851-2cbc-48c2-a439-bdc494d6329a.jpg", Title = "Холст, масло (50х80)", Price = 14500, PainterId = marcelRussoId },
+            
             new Painting { PaintingId = new Guid("27bad295-e53c-4060-8fb5-57681f1e4354"), Name = "Дама с собачкой", Image = "Assets/PaintingImg/27bad295-e53c-4060-8fb5-57681f1e4354.jpg", Title = "Акрил, бумага (50х80)", Price = 16500, PainterId = henriCelineId },
             new Painting { PaintingId = new Guid("7cea2648-a8fc-4cca-9730-85bf83ac437c"), Name = "Процедура", Image = "Assets/PaintingImg/7cea2648-a8fc-4cca-9730-85bf83ac437c.jpg", Title = "Цветная литография (40х60)", Price = 20000, PainterId = francoisDupontId }
         );

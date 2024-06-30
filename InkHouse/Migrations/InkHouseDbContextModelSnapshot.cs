@@ -39,17 +39,17 @@ namespace InkHouse.Migrations
                     b.HasData(
                         new
                         {
-                            CountryId = new Guid("903fb3fc-90c8-4353-a731-6911170cb807"),
+                            CountryId = new Guid("ed1dc00c-8576-4e3b-8a99-6c85ad9336b3"),
                             Name = "Франция"
                         },
                         new
                         {
-                            CountryId = new Guid("16e52979-6a2c-4498-b60e-35a9d7c68a30"),
+                            CountryId = new Guid("e8c499d3-a794-49a7-a65e-f0ec0bcace58"),
                             Name = "Германия"
                         },
                         new
                         {
-                            CountryId = new Guid("28b6a49f-4cb9-41ae-a2be-7a54112a191a"),
+                            CountryId = new Guid("36d13b72-f356-4d0a-8364-c6f55e78e538"),
                             Name = "Англия"
                         });
                 });
@@ -83,25 +83,25 @@ namespace InkHouse.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5676a486-0bf7-49a7-9be0-f9c482c2f591"),
+                            Id = new Guid("bb26a45a-120e-477f-9356-a3845f07af35"),
                             Birthdate = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CountryId = new Guid("903fb3fc-90c8-4353-a731-6911170cb807"),
+                            CountryId = new Guid("ed1dc00c-8576-4e3b-8a99-6c85ad9336b3"),
                             Name = "Марсель",
                             Surname = "Руссо"
                         },
                         new
                         {
-                            Id = new Guid("79c30055-dfcc-45f6-85a5-174cf2da2146"),
+                            Id = new Guid("9791266f-620d-433f-aad4-1dede4052505"),
                             Birthdate = new DateTime(1980, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CountryId = new Guid("16e52979-6a2c-4498-b60e-35a9d7c68a30"),
+                            CountryId = new Guid("e8c499d3-a794-49a7-a65e-f0ec0bcace58"),
                             Name = "Анри",
                             Surname = "Селин"
                         },
                         new
                         {
-                            Id = new Guid("bb57c88c-b1e3-43a4-825a-ac289e85cfb4"),
+                            Id = new Guid("28ff85a5-63da-41c8-827b-2d69afc3b148"),
                             Birthdate = new DateTime(1990, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CountryId = new Guid("28b6a49f-4cb9-41ae-a2be-7a54112a191a"),
+                            CountryId = new Guid("36d13b72-f356-4d0a-8364-c6f55e78e538"),
                             Name = "Франсуа",
                             Surname = "Дюпон"
                         });
@@ -140,19 +140,10 @@ namespace InkHouse.Migrations
                     b.HasData(
                         new
                         {
-                            PaintingId = new Guid("f8a8c851-2cbc-48c2-a439-bdc494d6329a"),
-                            Image = "Assets/PaintingImg/f8a8c851-2cbc-48c2-a439-bdc494d6329a.jpg",
-                            Name = "Охота Амура",
-                            PainterId = new Guid("5676a486-0bf7-49a7-9be0-f9c482c2f591"),
-                            Price = 14500.0,
-                            Title = "Холст, масло (50х80)"
-                        },
-                        new
-                        {
                             PaintingId = new Guid("27bad295-e53c-4060-8fb5-57681f1e4354"),
                             Image = "Assets/PaintingImg/27bad295-e53c-4060-8fb5-57681f1e4354.jpg",
                             Name = "Дама с собачкой",
-                            PainterId = new Guid("79c30055-dfcc-45f6-85a5-174cf2da2146"),
+                            PainterId = new Guid("9791266f-620d-433f-aad4-1dede4052505"),
                             Price = 16500.0,
                             Title = "Акрил, бумага (50х80)"
                         },
@@ -161,7 +152,7 @@ namespace InkHouse.Migrations
                             PaintingId = new Guid("7cea2648-a8fc-4cca-9730-85bf83ac437c"),
                             Image = "Assets/PaintingImg/7cea2648-a8fc-4cca-9730-85bf83ac437c.jpg",
                             Name = "Процедура",
-                            PainterId = new Guid("bb57c88c-b1e3-43a4-825a-ac289e85cfb4"),
+                            PainterId = new Guid("28ff85a5-63da-41c8-827b-2d69afc3b148"),
                             Price = 20000.0,
                             Title = "Цветная литография (40х60)"
                         });

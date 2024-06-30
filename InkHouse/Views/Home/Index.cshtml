@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Painting>
-
+﻿@model Painting
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,55 +6,129 @@
 
 <div class="first-block">
     <div class="first-inner-block">
-        <div class="head-first-block">Реплики картин от <span class="highlight-text">Ink. House</span></div>
-        <div class="description-first-block">Высокое качество отрисовки на плотной бумаге или льняном холсте. Редкие
-            произведения, доступные цены.</div>
+        <div class="head-first-block">Реплики картин от <span class="highlight-text">Ink. House</span></div>
+        <div class="description-first-block">Высокое качество отрисовки на плотной бумаге или льняном холсте. Редкие произведения, доступные цены.</div>
         <div class="button-first-block"><button class="first-block-button">Продукция</button></div>
-
     </div>
-
-
 </div>
-
-
-
 
 <div class="second-block">
     <div class="second-block-inner">
         <div class="second-block-head">
             <div class="second-block-head-descr">Репродукции</div>
-
             <div class="second-block-buttons">
-                <div class="div-sc-button"><button class="sc-button">Франция</button></div>
-                <div class="div-sc-button"><button class="sc-button1">Германия</button></div>
-                <div class="div-sc-button"><button class="sc-button1">Англия</button></div>
+                @foreach (var country in ViewBag.Countries)
+                {
+                    <div class="div-sc-button"><button class="sc-button1">@country.Name</button></div>
+                }
             </div>
         </div>
         <div style="width: 1110px; margin: 0 auto; display: flex; flex-wrap: wrap;">
-            @foreach (var painting in base.Model){
+            @if (ViewBag.Paintings != null && ViewBag.Paintings.Count > 0)
+            {
+                @for (int i = 0; i < ViewBag.Paintings.Count; i++)
+                {
+                    var painting = ViewBag.Paintings[i];
 
-                <div class="second-block-items">
+                    <div class="second-block-items">
+                        <div class="second-block-item">
+                            <div class="second-block-item-inner">
+                                <div class="item-img"><img src="/Home/Image/@painting.PaintingId"></div>
+                                <div class="item-artist-name">
+                                    <span>@painting.Painter.Name</span>
+                                    <span>@painting.Painter.Surname</span>
+                                </div>
+                                <div class="item-art-name">@painting.Name</div>
+                                <div class="item-description">@painting.Title</div>
 
-                    <div class="second-block-item">
-                        <div class="second-block-item-inner">
-                            <div class="item-img"><img src="/Home/Image/@painting.PaintingId"></div>
-                            <div class="item-artist-name">
-                                <span>@painting.Painter.Name</span>
-                                <span>@painting.Painter.Surname</span>
+                                <form asp-controller="Home" asp-action="ChangePrice" asp-route-id="@painting.PaintingId" method="post">
+                                    <div style="margin-bottom: 10px;">
+                                        <!-- Input для цены, изначально отключенный -->
+                                        <input id="price-@painting.PaintingId" name="price" class="item-price" value="@painting.Price руб" disabled style="border: none; background-color: transparent; outline: none; color: inherit; cursor: default;">
+                                        <!-- Кнопка для изменения цены -->
+                                        <button type="button" onclick="enablePriceInput('@painting.PaintingId')">Изменить цену</button>
+                                        <!-- Кнопка для сохранения изменений -->
+                                        <button type="submit" onclick="savePrice(@painting.PaintingId)">Сохранить</button>
+                                    </div>
+                                </form>
+
+                                <form asp-controller="Home" asp-action="Delete" asp-route-id="@painting.PaintingId" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <div class="item-button">
+                                        <button class="button-item" type="submit">Удалить</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="item-art-name">@painting.Name</div>
-                            <div class="item-description">@painting.Title</div>
-                            <div class="item-price">@painting.Price руб</div>
-                            <div class="item-button"><button class="button-item">В корзину</button></div>
-
                         </div>
                     </div>
-                
-                </div>
-        }
+
+                    @if (i == ViewBag.Paintings.Count - 1)
+                    {
+                        <div class="second-block-items">
+                            <div class="second-block-item">
+                                <div class="second-block-item-inner">
+                                    <form asp-route="AddPainting" method="post" enctype="multipart/form-data">
+                                        <div class="custom-file">
+                                            <label asp-for="Image" class="custom-file-label" for="customFile">Изображение картин</label>
+                                            <input asp-for="Image" type="file" class="custom-file-input" id="customFile">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="Name" class="form-label">Название</label>
+                                            <input style="width: 311px;" asp-for="Name" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="Title" class="form-label">Заголовок</label>
+                                            <textarea style="width: 311px;" class="form-control" asp-for="Title" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="PainterId" class="form-label">Художник</label>
+                                            <select asp-for="PainterId" class="form-control">
+                                                @foreach (var painter in ViewBag.Painters)
+                                                {
+                                                    <option value="@painter.Id">@painter.Name @painter.Surname</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <label asp-for="Price" for="basic-url">Цена</label>
+                                        <input style="width: 311px;" asp-for="Price" type="number" class="form-control" style="border: none;">
+                                        <button class="button-item" type="submit">Добавить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
         </div>
-
-
-        
     </div>
 </div>
+
+<script>
+    // Функция для активации редактирования цены
+    function enablePriceInput(paintingId) {
+        document.getElementById('price-' + paintingId).disabled = false;
+    }
+
+    // Функция для отправки формы сохранения изменений цены
+    function savePrice(paintingId) {
+        // Необходимо добавить код для отправки формы, если требуется дополнительная логика перед сохранением
+        // Можно использовать AJAX для асинхронного сохранения
+        // Пример использования fetch для отправки формы POST
+        fetch(`/Home/ChangePrice/${paintingId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                // Добавьте данные, которые требуется отправить на сервер для изменения цены
+                // Например, цену и другие необходимые параметры
+            })
+        })
+        .then(response => {
+            // Обработка ответа, если требуется
+        })
+        .catch(error => {
+            console.error('Ошибка при сохранении цены:', error);
+        });
+    }
+</script>

@@ -8,6 +8,8 @@ public class Painting
     public string Title { get; set; }
     public double Price { get; set; }
     public Guid PainterId { get; set; } 
+    
 
     public Painter Painter { get; set; }
+    
 }
