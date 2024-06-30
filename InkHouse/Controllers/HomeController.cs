@@ -51,13 +51,21 @@ public class HomeController : Controller
             return NotFound();
         }
 
-        var num = Convert.ToDouble(newPrice);
-
-        painting.Price = num;
-        await paintingService.UpdatePaintingAsync(painting);
+        var priceString = newPrice.Replace(" руб", "").Trim();
+        if (double.TryParse(priceString, out var num))
+        {
+            painting.Price = num;
+            await paintingService.UpdatePaintingAsync(painting);
+        }
+        else
+        {
+            
+            ModelState.AddModelError("", "Invalid price format");
+        }
 
         return RedirectToAction("Index");
     }
+
 
 
     [HttpPost]
