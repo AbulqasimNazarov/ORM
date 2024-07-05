@@ -35,8 +35,8 @@
                             <div class="second-block-item-inner">
                                 <div class="item-img"><img src="/Home/Image/@painting.PaintingId"></div>
                                 <div class="item-artist-name">
-                                    <span>@painting.Painter.Name</span>
-                                    <span>@painting.Painter.Surname</span>
+                                    <span>@(painting.Painter?.Name ?? "Unknown Painter")</span>
+                                    <span>@(painting.Painter?.Surname ?? "")</span>
                                 </div>
                                 <div class="item-art-name">@painting.Name</div>
                                 <div class="item-description">@painting.Title</div>

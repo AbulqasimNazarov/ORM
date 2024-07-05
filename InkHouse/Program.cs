@@ -19,7 +19,8 @@ builder.Services.AddDbContext<InkHouseDbContext>(options =>
 
 
 builder.Services.AddTransient<IPaintingService, PaintingService>();
-builder.Services.AddTransient<IPaintingRepository, PaintingEfRepository>();
+//builder.Services.AddTransient<IPaintingRepository, PaintingEfRepository>();
+builder.Services.AddTransient<IPaintingRepository, PaintingDapperRepository>();
 
 
 
