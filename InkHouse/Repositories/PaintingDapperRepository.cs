@@ -14,10 +14,12 @@ namespace InkHouse.Repositories
     public class PaintingDapperRepository : IPaintingRepository
     {
         private readonly string connectionString;
+        System.Data.SqlClient.SqlConnection? connection;
 
         public PaintingDapperRepository(IConfiguration configuration)
         {
             this.connectionString = configuration.GetConnectionString("MsSqlServer");
+            this.connection = new SqlConnection(this.connectionString);
         }
 
         public async Task CreateAsync(Painting obj, IFormFile image)
@@ -31,10 +33,10 @@ namespace InkHouse.Repositories
             await image.CopyToAsync(newFileStream);
 
 
-            using var connection = new SqlConnection(this.connectionString);
+            //using var connection = new SqlConnection(this.connectionString);
             var sql = @"INSERT INTO Paintings (PaintingId, Image, Name, Title, Price, PainterId)
                 VALUES (@PaintingId, @Image, @Name, @Title, @Price, @PainterId)";
-            await connection.ExecuteAsync(sql, new
+            await this.connection.ExecuteAsync(sql, new
             {
                 obj.PaintingId,
                 obj.Image,
@@ -48,14 +50,14 @@ namespace InkHouse.Repositories
 
         public async Task DeleteByIdAsync(Guid id)
         {
-            using var connection = new SqlConnection(this.connectionString);
+            //using var connection = new SqlConnection(this.connectionString);
             var sql = "DELETE FROM Paintings WHERE PaintingId = @Id";
-            await connection.ExecuteAsync(sql, new { Id = id });
+            await this.connection.ExecuteAsync(sql, new { Id = id });
         }
 
         public async Task<IEnumerable<Painting>> GetAllAsync()
         {
-            using var connection = new SqlConnection(this.connectionString);
+            //using var connection = new SqlConnection(this.connectionString);
             var sql = @"
                         SELECT 
                             p.PaintingId, p.Image, p.Name, p.Title, p.Price, p.PainterId, 
@@ -63,7 +65,7 @@ namespace InkHouse.Repositories
                         FROM Paintings p
                         INNER JOIN Painters pa ON p.PainterId = pa.Id";
 
-            var paintings = await connection.QueryAsync<Painting, Painter, Painting>(
+            var paintings = await this.connection.QueryAsync<Painting, Painter, Painting>(
                 sql,
                 (painting, painter) =>
                 {
@@ -81,28 +83,28 @@ namespace InkHouse.Repositories
 
         public async Task<IEnumerable<Country>> GetAllCountriesAsync()
         {
-            using var connection = new SqlConnection(this.connectionString);
-            return await connection.QueryAsync<Country>("SELECT * FROM Countries");
+            //using var connection = new SqlConnection(this.connectionString);
+            return await this.connection.QueryAsync<Country>("SELECT * FROM Countries");
         }
 
         public async Task<IEnumerable<Painter>> GetAllPaintersAsync()
         {
-            using var connection = new SqlConnection(this.connectionString);
-            return await connection.QueryAsync<Painter>("SELECT * FROM Painters");
+            //using var connection = new SqlConnection(this.connectionString);
+            return await this.connection.QueryAsync<Painter>("SELECT * FROM Painters");
         }
 
         public async Task<Painting> GetByIdAsync(Guid id)
         {
-            using var connection = new SqlConnection(this.connectionString);
+            //using var connection = new SqlConnection(this.connectionString);
             var sql = "SELECT * FROM Paintings WHERE PaintingId = @Id";
-            return await connection.QueryFirstOrDefaultAsync<Painting>(sql, new { Id = id });
+            return await this.connection.QueryFirstOrDefaultAsync<Painting>(sql, new { Id = id });
         }
 
         public async Task UpdateAsync(Painting painting)
         {
-            using var connection = new SqlConnection(this.connectionString);
+            //using var connection = new SqlConnection(this.connectionString);
             var sql = "UPDATE Paintings SET Name = @Name, Title = @Title, PainterId = @PainterId, Price = @Price WHERE PaintingId = @PaintingId";
-            await connection.ExecuteAsync(sql, new
+            await this.connection.ExecuteAsync(sql, new
             {
                 painting.Name,
                 painting.Title,
